@@ -7,18 +7,18 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### a) Load the necessary packages
-```{r, include=FALSE}
+### a) Set working directory and load the necessary packages
+
+The working directory will be different for every user. 
+Set the directory to where the "penguins-main" folder is saved on your computer. 
+```{r}
+#setwd("insert file path here")
+
 #This file contains the functions needed to carry out this analysis:
 source("functions/libraries.r") 
 ```
 
-The working directory will be different for every user. 
-Set the directory to where the PenguinProject folder is saved on your computer. 
-```{r}
-#setwd("insert file path here")
 
-```
 
 ### b) Load and appropriately clean the data 
 To make the penguin data easier to analyse, we should tidy it up using our saved cleaning functions.
