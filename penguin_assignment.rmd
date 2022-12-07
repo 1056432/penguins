@@ -16,9 +16,8 @@ source("functions/libraries.r")
 The working directory will be different for every user. 
 Set the directory to where the PenguinProject folder is saved on your computer. 
 ```{r}
-#setwd(insert file path here)
+#setwd("insert file path here")
 
-setwd("C:/Users/ashaw/Dropbox/Asha/Uni/Third Year/Computer skills/Session 5- Reproducible research in R and making figures/PenguinProject")
 ```
 
 ### b) Load and appropriately clean the data 
@@ -68,7 +67,7 @@ culmen_scatterplot
 
 
 ```
-This scatterplot supports that there is no significant interaction between penguin species and body mass because the regression lines have a roughly equal gradient.   
+This scatterplot supports that there is no significant interaction between penguin species and body mass because the regression lines have a vary similar gradient.   
 The steep gradient of each regression line shows the main effect of body mass; as body mass increases, so does culmen depth.  
 Finally, whilst Adelie and Chinstrap penguins have similar culmen depths, the culmens of Gentoo penguins are shallower. 
 
