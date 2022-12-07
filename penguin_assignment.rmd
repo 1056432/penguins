@@ -1,0 +1,91 @@
+---
+title: 'Reproducibility Assignment: Question 4'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### a) Load the necessary packages
+```{r, include=FALSE}
+#This file contains the functions needed to carry out this analysis:
+source("functions/libraries.r") 
+```
+
+The working directory will be different for every user. 
+Set the directory to where the PenguinProject folder is saved on your computer. 
+```{r}
+#setwd(insert file path here)
+
+setwd("C:/Users/ashaw/Dropbox/Asha/Uni/Third Year/Computer skills/Session 5- Reproducible research in R and making figures/PenguinProject")
+```
+
+### b) Load and appropriately clean the data 
+To make the penguin data easier to analyse, we should tidy it up using our saved cleaning functions.
+```{r}
+#First we need to load our raw data
+penguins_raw <- read.csv("data_raw/penguins_raw.csv")
+head(penguins_raw) #This shows us the first 6 rows of our raw dataset.
+
+#Next we need to load the cleaning functions
+source("functions/cleaning.R")  
+penguins_clean <- cleaning(penguins_raw) #This function ensures all our column headings are in the same format, removes empty rows and columns, and removes certain columns
+head(penguins_clean) #This shows us the first 6 rows of our clean dataset
+
+penguins_culmen <- remove_empty_culmen_depth(penguins_clean) #This function removes any columns that are irrelevant to our analysis, and takes out any rows containing NA for our variables of interest. 
+penguins_culmen #This shows us what is remaining in our dataset
+
+
+```
+
+### c) Run a statistical test on the Palmer Penguins dataset
+I want to determine the effect of penguin species, body mass, and their interaction on penguin culmen depth. To do this I will create a linear model and run an ANCOVA test.
+
+```{r}
+
+lm_culmen_depth <- lm(culmen_depth_mm ~ body_mass_g*species, penguins_culmen)
+summary(lm_culmen_depth)
+  anova(lm_culmen_depth)
+```
+
+This ANCOVA revealed there is no statistically significant interaction between body mass and species (F(2, 336)= 0.7377, p=0.479). This means culmen depth does not have a different relationship with body mass in different penguin species.  
+However, the ANCOVA also revealed that there is a statistically significant main effect of body mass (F(1,336)=382.9, p<0.0001) and of species (F(2,336)=499.5, p<0.0001). 
+
+The R-squared value tells us that our main effects of body mass and species explain approximately 80% of the variation in culmen depth.
+
+We can explore the effect of body mass and species on culmen depth further by visualising the data. 
+
+
+### d) Produce a figure that explains the statistical test
+```{r, out.width = "150%"}
+
+#To make the figure we are going to use a function I made earlier.
+source("functions/plotting.r") #Load the plotting function
+culmen_scatterplot <- plot_culmen_figure(penguins_culmen) #This plots the figure
+culmen_scatterplot
+
+
+
+```
+This scatterplot supports that there is no significant interaction between penguin species and body mass because the regression lines have a roughly equal gradient.   
+The steep gradient of each regression line shows the main effect of body mass; as body mass increases, so does culmen depth.  
+Finally, whilst Adelie and Chinstrap penguins have similar culmen depths, the culmens of Gentoo penguins are shallower. 
+
+### e) Save the plot
+We can save the plot using saving functions.
+
+```{r}
+source("functions/saving.r") #import the saving functions
+save_culmen_plot_png(penguins_culmen, "figures/culmen_scatterplot.png", width= 10, height= 7, res=600, scaling =0.5) #This function saves the plot as a png
+
+save_culmen_plot_svg(penguins_culmen, "figures/culmen_scatterplot.svg", width=10, height=7, scaling =1) #This function saves the plot as an svg
+
+```
+
+
+
+
+
+
+
