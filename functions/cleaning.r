@@ -1,4 +1,4 @@
-
+#Purpose of script: contains functions for cleaning the PalmerPenguins dataset
 
 #A function to clean column names, remove empty rows and columns, remove certain columns
 cleaning <- function(data_raw){
