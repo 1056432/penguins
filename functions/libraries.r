@@ -1,3 +1,5 @@
+#Purpose of script: contains packages needed in the penguin_assignment.rmd
+
 #The following packages can be loaded using this file
 library(palmerpenguins)
 library(ggplot2)
