@@ -33,7 +33,7 @@ penguins_clean <- cleaning(penguins_raw) #This function ensures all our column h
 head(penguins_clean) #This shows us the first 6 rows of our clean dataset
 
 penguins_culmen <- remove_empty_culmen_depth(penguins_clean) #This function removes any columns that are irrelevant to our analysis, and takes out any rows containing NA for our variables of interest. 
-penguins_culmen #This shows us what is remaining in our dataset
+head(penguins_culmen) #This shows us what is remaining in our dataset
 
 
 ```
