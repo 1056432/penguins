@@ -28,7 +28,7 @@ penguins_raw <- read.csv("data_raw/penguins_raw.csv")
 head(penguins_raw) #This shows us the first 6 rows of our raw dataset.
 
 #Next we need to load the cleaning functions
-source("functions/cleaning.R")  
+source("functions/cleaning.r")  
 penguins_clean <- cleaning(penguins_raw) #This function ensures all our column headings are in the same format, removes empty rows and columns, and removes certain columns
 head(penguins_clean) #This shows us the first 6 rows of our clean dataset
 
