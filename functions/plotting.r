@@ -1,3 +1,4 @@
+#Purpose of script: contains code for plotting pneguin culmen depth against body mass in three penguin species. 
 
 #Penguin culmen figure
 plot_culmen_figure <- function(penguins_culmen){
