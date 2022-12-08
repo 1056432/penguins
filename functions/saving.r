@@ -1,3 +1,6 @@
+#Purpose of script: contains functions for saving png and svg files
+
+
 #Function for saving png files
 save_culmen_plot_png <- function(penguins_culmen, 
                                         filename, width, height, res, scaling){
