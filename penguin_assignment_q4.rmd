@@ -14,7 +14,7 @@ Set the directory to where the "penguins-main" folder is saved on your computer.
 ```{r}
 #setwd("insert file path here")
 
-#This file contains the functions needed to carry out this analysis:
+#This file contains the libraries needed to carry out this analysis. Check that all libraries are installed already.
 source("functions/libraries.r") 
 ```
 
